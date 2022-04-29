@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import Header from './components/Header';
 import ProductList from './components/ProductList';
+import Cart from './components/Cart'
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
     <div className="App">
       <Header setFilteredProducts={setFilteredProducts} showProducts={showProducts}/>
       <ProductList products={products} handleClick={handleClick} filteredProducts={filteredProducts}/>
+      <Cart currentSale={currentSale} handleClick={handleClick}/>
     </div>
   );
 }
