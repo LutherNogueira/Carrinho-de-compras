@@ -35,6 +35,7 @@ function App() {
       discount: 110.19,
     },
   ]);
+  
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [currentSale, setCurrentSale] = useState([]);
@@ -59,8 +60,10 @@ function App() {
   return (
     <div className="App">
       <Header setFilteredProducts={setFilteredProducts} showProducts={showProducts}/>
-      <ProductList products={products} handleClick={handleClick} filteredProducts={filteredProducts}/>
-      <Cart currentSale={currentSale} handleClick={handleClick}/>
+      <div className='body__container'>
+        <ProductList products={products} handleClick={handleClick} filteredProducts={filteredProducts}/>
+        <Cart currentSale={currentSale} handleClick={handleClick}/>
+      </div>
     </div>
   );
 }

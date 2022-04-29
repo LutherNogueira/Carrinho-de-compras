@@ -5,8 +5,8 @@ import ProductCart from '../ProductCart'
 const Cart  = ({currentSale}) => {
 
     return (
-    <div>
-          <div>
+    <div className='cart__container'>
+          <div className='cart__product__container'>
             {currentSale.map((item) => (
               <ProductCart key={item.id} product={item} />
             ))}
