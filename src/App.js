@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState } from 'react';
 
 import Header from './components/Header';
+import ProductList from './components/ProductList';
 
 function App() {
 
@@ -33,10 +34,31 @@ function App() {
       discount: 110.19,
     },
   ]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const [currentSale, setCurrentSale] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0)
+
+  const handleClick = (productCode) => {
+    const checkProduct = currentSale.some((product) => product.code === productCode);
+    if (checkProduct === false) {
+      const productFind = products.find((product) => product.code === productCode);
+      setCurrentSale([...currentSale, productFind]);
+    }
+  };
+
+  const showProducts = (searchInput) => {
+    const searchFiltered  = products.filter((product) =>(
+      product.name.toLowerCase().includes(searchInput.toLowerCase())
+      ));
+    setFilteredProducts(searchFiltered);
+    console.log(searchFiltered)
+  };
+  
   return (
     <div className="App">
-      <Header/>
+      <Header setFilteredProducts={setFilteredProducts} showProducts={showProducts}/>
+      <ProductList products={products} handleClick={handleClick} filteredProducts={filteredProducts}/>
     </div>
   );
 }

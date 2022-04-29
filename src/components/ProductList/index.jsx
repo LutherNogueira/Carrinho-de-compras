@@ -5,12 +5,12 @@ const ProductList  = ({products, filteredProducts, handleClick}) => {
 
     return (
       <>
-      {filteredProducts.length > 0
-        ? filteredProducts.map((item) => (
-            <Product product={item} handleClick={handleClick} key={item.id} />
+      {filteredProducts.length === 0
+        ? products.map((item) => (
+            <Product product={item} handleClick={handleClick} key={item.code} />
           ))
-        : products.map((item) => (
-            <Product product={item} handleClick={handleClick} key={item.id} />
+        : filteredProducts.map((item) => (
+            <Product product={item} handleClick={handleClick} key={item.code} />
           ))}
       </>    
   );
